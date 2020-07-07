@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Carousel } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 //Component which will be used to render a single pokemon
 export default function Pokemon({ number }) {
@@ -8,33 +10,42 @@ export default function Pokemon({ number }) {
       .then((res) => res.json())
       .then(setData)
       .catch(console.error());
-  }, [data]); //im not sure that the 2nd arguement is doing anything but it got rid of a warning
+  }, [number]); //im not sure that the 2nd arguement is doing anything but it got rid of a warning
 
-  function PokePic({ picURL }) {
-    if (picURL === null) {
-      return <input type="text" value="I'm null" />;
-    }
-
-    return <img src={picURL} />;
-  }
   //data was found for this pokemon
   if (data) {
     return (
-      <div>
-        <h1>{data.name}</h1>
-        <ul>
+      // <div>
+      //   <h1>{CapitalizeName(data.name)}</h1>
+
+      //   {Object.values(data.sprites).map((url, i) => (
+      //     <>{url ? <PokePic picURL={url} /> : ""}</> //display non null images
+      //   ))}
+      // </div>
+      <Container>
+        <h1>{CapitalizeName(data.name)}</h1>
+        <Carousel>
           {Object.values(data.sprites).map((url, i) => (
-            //<img src={url} />
-            //<PokePic picKey={key} picUrl={url} />
-            <li>
-              {i}: {url}
-              <PokePic picURL={url} />
-            </li>
+            <>
+              {url ? (
+                <Carousel.Item>
+                  <PokePic picURL={url} />
+                </Carousel.Item>
+              ) : (
+                ""
+              )}
+            </> //display non null images
           ))}
-        </ul>
-        {JSON.stringify(data.sprites)}
-      </div>
+        </Carousel>
+      </Container>
     );
   }
   return <div>{number} not found.</div>;
+}
+
+function PokePic({ picURL }) {
+  return <img src={picURL} />;
+}
+function CapitalizeName(name) {
+  return name[0].toUpperCase() + name.slice(1);
 }
