@@ -11,9 +11,9 @@ import Pokemon from "./Components/Pokemon";
 //   document.getElementById('root')
 // );
 ReactDOM.render(
-  <React.StrictMode>
-    <Pokemon number={1} />
-  </React.StrictMode>,
+  //<React.StrictMode>
+  <Pokemon number={1} />,
+  //</React.StrictMode>,
   document.getElementById("root")
 );
 // If you want your app to work offline and load faster, you can change

@@ -10,28 +10,31 @@ export default function Pokemon({ number }) {
       .catch(console.error());
   }, [data]); //im not sure that the 2nd arguement is doing anything but it got rid of a warning
 
-  function PokePic({ myUrl }) {
-    return <img src={myUrl} />;
-  }
+  function PokePic({ picURL }) {
+    if (picURL === null) {
+      return <input type="text" value="I'm null" />;
+    }
 
+    return <img src={picURL} />;
+  }
   //data was found for this pokemon
   if (data) {
     return (
       <div>
         <h1>{data.name}</h1>
-
-        {data.sprites.map((url) => {
-          //   if (url) {
-          //     <label>{url}</label>;
-          //   }
-          <PokePic myUrl={url} />;
-        })}
+        <ul>
+          {Object.values(data.sprites).map((url, i) => (
+            //<img src={url} />
+            //<PokePic picKey={key} picUrl={url} />
+            <li>
+              {i}: {url}
+              <PokePic picURL={url} />
+            </li>
+          ))}
+        </ul>
+        {JSON.stringify(data.sprites)}
       </div>
     );
   }
   return <div>{number} not found.</div>;
 }
-//return <div>{JSON.stringify(data)}</div>;
-// {
-//   /* <label>{JSON.stringify(data.sprites)}</label> */
-// }
