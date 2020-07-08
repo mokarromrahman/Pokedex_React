@@ -41,8 +41,10 @@ export default function Pokemon({ number }) {
     //console.log(spritesArray);  //used in testing
 
     //Find the types and set the type of this pokemon
+    let tempTypes = [];
     Object.values(data.types).map((t) => {
-      setTypes((types) => types.push(t.type.name));
+      //setTypes((types) => types.push(t.type.name));
+      tempTypes.push(t.type.name);
     });
     //setTypes(tempTypes);
     console.log(types);
@@ -87,19 +89,6 @@ export default function Pokemon({ number }) {
   return <div>{number} not found.</div>;
 }
 
-function PokeContainer({ typesArr }) {
-  const [types, setTypes] = useState(typesArr);
-  const [currentType, setCurrentType] = useState(types[0]);
-
-  return (
-    //https://stackoverflow.com/questions/36209432/reactjs-add-dynamic-class-to-manual-class-names
-    //this can be used to dynamically change the classes
-    <Container
-      className="customBorder customBorder-grass"
-      style={{ width: "15em" }}
-    ></Container>
-  );
-}
 function PicSlideShow({ spritesDescUrlArray }) {
   const [sprites, setSprites] = useState(spritesDescUrlArray);
   const [currentSpriteIndex, setCurrentSpriteIndex] = useState(0);
