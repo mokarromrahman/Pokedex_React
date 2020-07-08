@@ -1,0 +1,85 @@
+@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+
+body {
+  font-family: "Pokemon";
+}
+
+.customBorder {
+  border: 3px solid #dee2e6 !important;
+}
+
+/*
+pokemon type colors 
+https://www.epidemicjohto.com/t882-type-colors-hex-colors
+Normal Type: A8A77A
+Fire Type:  EE8130
+Water Type:  6390F0
+Electric Type:  F7D02C
+Grass Type:  7AC74C
+Ice Type:  96D9D6
+Fighting Type:  C22E28
+Poison Type:  A33EA1
+Ground Type:  E2BF65
+Flying Type:  A98FF3
+Psychic Type:  F95587
+Bug Type:  A6B91A
+Rock Type:  B6A136
+Ghost Type:  735797
+Dragon Type:  6F35FC
+Dark Type:  705746
+Steel Type:  B7B7CE
+Fairy Type:  D685AD */
+.customBorder-normal {
+  border-color: #a8a77a !important;
+}
+.customBorder-fire {
+  border-color: #ee8130 !important;
+}
+.customBorder-water {
+  border-color: #6390f0 !important;
+}
+.customBorder-electric {
+  border-color: #f7d02c !important;
+}
+.customBorder-grass {
+  border-color: #7ac74c !important;
+}
+.customBorder-ice {
+  border-color: #96d9d6 !important;
+}
+.customBorder-fighting {
+  border-color: #c22e28 !important;
+}
+.customBorder-poison {
+  border-color: #a33ea1 !important;
+}
+.customBorder-ground {
+  border-color: #e2bf65 !important;
+}
+.customBorder-flying {
+  border-color: #a98ff3 !important;
+}
+.customBorder-psychic {
+  border-color: #f95587 !important;
+}
+.customBorder-bug {
+  border-color: #a6b91a !important;
+}
+.customBorder-rock {
+  border-color: #b6a136 !important;
+}
+.customBorder-ghost {
+  border-color: #6f35fc !important;
+}
+.customBorder-dragon {
+  border-color: #a98ff3 !important;
+}
+.customBorder-dark {
+  border-color: #705746 !important;
+}
+.customBorder-steel {
+  border-color: #b7b7ce !important;
+}
+.customBorder-fairy {
+  border-color: #d685ad !important;
+}
