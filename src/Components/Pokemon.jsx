@@ -3,9 +3,11 @@ import { Container, Row, Image, Button, Col } from "react-bootstrap";
 import { ArrowLeft, ArrowRight } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.css";
 import "../styling/style.css";
+
 //Component which will be used to render a single pokemon
 export default function Pokemon({ number }) {
   const [data, setData] = useState(null);
+  const [types, setTypes] = useState(null);
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${number}`)
       .then((res) => res.json())
@@ -19,6 +21,7 @@ export default function Pokemon({ number }) {
     const spritesArray = getSpriteArray(data.sprites);
     //console.log(spritesArray);
     console.log(data.types);
+
     return (
       // <div>
       //   <h1>{CapitalizeName(data.name)}</h1>
