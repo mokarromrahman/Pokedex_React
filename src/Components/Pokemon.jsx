@@ -3,11 +3,30 @@ import { Container, Row, Image, Button, Col } from "react-bootstrap";
 import { ArrowLeft, ArrowRight } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.css";
 import "../styling/style.css";
+//types icons came from https://github.com/duiker101/pokemon-type-svg-icons
+import bug from "../type_icons/bug.svg";
+import dark from "../type_icons/dark.svg";
+import dragon from "../type_icons/dragon.svg";
+import electric from "../type_icons/electric.svg";
+import fairy from "../type_icons/fairy.svg";
+import fighting from "../type_icons/fighting.svg";
+import fire from "../type_icons/fire.svg";
+import flying from "../type_icons/flying.svg";
+import ghost from "../type_icons/ghost.svg";
+import grass from "../type_icons/grass.svg";
+import ground from "../type_icons/ground.svg";
+import ice from "../type_icons/ice.svg";
+import normal from "../type_icons/normal.svg";
+import poison from "../type_icons/poison.svg";
+import psychic from "../type_icons/psychic.svg";
+import rock from "../type_icons/rock.svg";
+import steel from "../type_icons/steel.svg";
+import water from "../type_icons/water.svg";
 
 //Component which will be used to render a single pokemon
 export default function Pokemon({ number }) {
   const [data, setData] = useState(null);
-  const [types, setTypes] = useState(null);
+  const [types, setTypes] = useState([]);
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${number}`)
       .then((res) => res.json())
@@ -19,9 +38,14 @@ export default function Pokemon({ number }) {
   if (data) {
     //find all the sprites and the names of each sprite normalized names
     const spritesArray = getSpriteArray(data.sprites);
-    //console.log(spritesArray);
-    console.log(data.types);
+    //console.log(spritesArray);  //used in testing
 
+    //Find the types and set the type of this pokemon
+    Object.values(data.types).map((t) => {
+      setTypes((types) => types.push(t.type.name));
+    });
+    //setTypes(tempTypes);
+    console.log(types);
     return (
       // <div>
       //   <h1>{CapitalizeName(data.name)}</h1>
@@ -63,6 +87,19 @@ export default function Pokemon({ number }) {
   return <div>{number} not found.</div>;
 }
 
+function PokeContainer({ typesArr }) {
+  const [types, setTypes] = useState(typesArr);
+  const [currentType, setCurrentType] = useState(types[0]);
+
+  return (
+    //https://stackoverflow.com/questions/36209432/reactjs-add-dynamic-class-to-manual-class-names
+    //this can be used to dynamically change the classes
+    <Container
+      className="customBorder customBorder-grass"
+      style={{ width: "15em" }}
+    ></Container>
+  );
+}
 function PicSlideShow({ spritesDescUrlArray }) {
   const [sprites, setSprites] = useState(spritesDescUrlArray);
   const [currentSpriteIndex, setCurrentSpriteIndex] = useState(0);
