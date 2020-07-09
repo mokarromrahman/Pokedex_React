@@ -24,7 +24,7 @@ import steel from "../type_icons/steel.svg";
 import water from "../type_icons/water.svg";
 
 //Component which will be used to render a single pokemon
-export default function Pokemon({ number }) {
+export default function TestPokemon({ number }) {
   const [data, setData] = useState(null);
   const [types, setTypes] = useState([]);
   const [currentType, setCurrentType] = useState("");
@@ -46,8 +46,37 @@ export default function Pokemon({ number }) {
       .catch(console.error);
   }, [number]); //im not sure that the 2nd arguement is doing anything but it got rid of a warning
 
+  //data was found for this pokemon
+  //   if (data) {
+  //     //find all the sprites and the names of each sprite normalized names
+  //     const spritesArray = getSpriteArray(data.sprites);
+  //     //console.log(spritesArray);  //used in testing
+  //     return (
+  //       <>
+  //         <Container
+  //           //https://stackoverflow.com/questions/36209432/reactjs-add-dynamic-class-to-manual-class-names
+  //           //this can be used to dynamically change the classes
+  //           className={`customBorder customBorder-` + currentType}
+  //           style={{ width: "15em" }}
+  //         >
+  //           <Row className="justify-content-md-center">
+  //             <label>{capitalizeName(data.name)}</label>
+  //           </Row>
+  //           <PicSlideShow spritesDescUrlArray={spritesArray} />
+  //           <Row className="justify-content-md-center">
+  //             {Object.values(types).map((t) => (
+  //               <Badge pill className={`customBadge-` + t}>
+  //                 {capitalizeName(t)}
+  //               </Badge>
+  //             ))}
+  //           </Row>
+  //         </Container>
+  //       </>
+  //     );
+  //   }
+  //return <div>{number} not found.</div>;
+
   return data ? (
-    //data was found for this pokemon
     <>
       <Container
         //https://stackoverflow.com/questions/36209432/reactjs-add-dynamic-class-to-manual-class-names
@@ -69,7 +98,6 @@ export default function Pokemon({ number }) {
       </Container>
     </>
   ) : (
-    //there was no data returned for the pokemon
     <div>{number} not found.</div>
   );
 }
@@ -77,21 +105,6 @@ export default function Pokemon({ number }) {
 function PicSlideShow({ spritesDescUrlArray }) {
   const [sprites, setSprites] = useState(spritesDescUrlArray);
   const [currentSpriteIndex, setCurrentSpriteIndex] = useState(0);
-  //order of the image descriptions
-  const imageOrderOriginal = [
-    "front_default",
-    "back_default",
-    "front_female",
-    "back_female",
-    "front_shiny",
-    "back_shiny",
-    "front_shiny_female",
-    "back_shiny_female",
-  ];
-  const imageOrderNormalized = imageOrderOriginal.map((i) =>
-    normalizeDescriptions(i)
-  );
-  console.log(imageOrderNormalized);
   return (
     <>
       <Row className="justify-content-md-center">
