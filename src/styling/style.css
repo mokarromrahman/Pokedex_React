@@ -83,3 +83,94 @@ Fairy Type:  D685AD */
 .customBorder-fairy {
   border-color: #d685ad !important;
 }
+/* custom badges */
+.customBadge-normal {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #a8a77a;
+}
+.customBadge-fire {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #ee8130;
+}
+.customBadge-water {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #6390f0;
+}
+.customBadge-electric {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #f7d02c;
+}
+.customBadge-grass {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #7ac74c;
+}
+.customBadge-ice {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #96d9d6;
+}
+.customBadge-fighting {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #c22e28;
+}
+.customBadge-poison {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #a33ea1;
+}
+.customBadge-ground {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #e2bf65;
+}
+.customBadge-flying {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #a98ff3;
+}
+.customBadge-psychic {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #f95587;
+}
+.customBadge-bug {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #a6b91a;
+}
+.customBadge-rock {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #b6a136;
+}
+.customBadge-ghost {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #6f35fc;
+}
+.customBadge-dragon {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #a98ff3;
+}
+.customBadge-dark {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #705746;
+}
+.customBadge-steel {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #b7b7ce;
+}
+.customBadge-fairy {
+  font-family: "Courier New", Courier, monospace;
+  color: #fff;
+  background-color: #d685ad;
+}

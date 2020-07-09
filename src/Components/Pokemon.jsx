@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Image, Button, Col } from "react-bootstrap";
+import { Container, Row, Image, Button, Col, Badge } from "react-bootstrap";
 import { ArrowLeft, ArrowRight } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.css";
 import "../styling/style.css";
@@ -27,11 +27,23 @@ import water from "../type_icons/water.svg";
 export default function Pokemon({ number }) {
   const [data, setData] = useState(null);
   const [types, setTypes] = useState([]);
+  const [currentType, setCurrentType] = useState("");
   useEffect(() => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${number}`)
       .then((res) => res.json())
-      .then(setData)
-      .catch(console.error());
+      .then((r) => {
+        //set the data
+        setData(r);
+        //set the types of the pokemon
+        let tempTypes = [];
+        Object.values(r.types).map((t) => {
+          tempTypes.push(t.type.name);
+        });
+        setTypes(tempTypes);
+        //set the current type to the first type
+        setCurrentType(tempTypes[1]);
+      })
+      .catch(console.error);
   }, [number]); //im not sure that the 2nd arguement is doing anything but it got rid of a warning
 
   //data was found for this pokemon
@@ -39,27 +51,25 @@ export default function Pokemon({ number }) {
     //find all the sprites and the names of each sprite normalized names
     const spritesArray = getSpriteArray(data.sprites);
     //console.log(spritesArray);  //used in testing
-
-    //Find the types and set the type of this pokemon
-    // let tempTypes = [];
-    // Object.values(data.types).map((t) => {
-    //   //setTypes((types) => types.push(t.type.name));
-    //   tempTypes.push(t.type.name);
-    // });
-    //setTypes(tempTypes);
-    //console.log(types);
     return (
       <>
         <Container
           //https://stackoverflow.com/questions/36209432/reactjs-add-dynamic-class-to-manual-class-names
           //this can be used to dynamically change the classes
-          className="customBorder customBorder-grass"
+          className={`customBorder customBorder-` + currentType}
           style={{ width: "15em" }}
         >
           <Row className="justify-content-md-center">
             <label>{capitalizeName(data.name)}</label>
           </Row>
           <PicSlideShow spritesDescUrlArray={spritesArray} />
+          <Row className="justify-content-md-center">
+            {Object.values(types).map((t) => (
+              <Badge pill className={`customBadge-` + t}>
+                {capitalizeName(t)}
+              </Badge>
+            ))}
+          </Row>
         </Container>
       </>
     );
