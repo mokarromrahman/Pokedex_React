@@ -41,21 +41,14 @@ export default function Pokemon({ number }) {
     //console.log(spritesArray);  //used in testing
 
     //Find the types and set the type of this pokemon
-    let tempTypes = [];
-    Object.values(data.types).map((t) => {
-      //setTypes((types) => types.push(t.type.name));
-      tempTypes.push(t.type.name);
-    });
+    // let tempTypes = [];
+    // Object.values(data.types).map((t) => {
+    //   //setTypes((types) => types.push(t.type.name));
+    //   tempTypes.push(t.type.name);
+    // });
     //setTypes(tempTypes);
-    console.log(types);
+    //console.log(types);
     return (
-      // <div>
-      //   <h1>{CapitalizeName(data.name)}</h1>
-
-      //   {Object.values(data.sprites).map((url, i) => (
-      //     <>{url ? <PokePic picURL={url} /> : ""}</> //display non null images
-      //   ))}
-      // </div>
       <>
         <Container
           //https://stackoverflow.com/questions/36209432/reactjs-add-dynamic-class-to-manual-class-names
@@ -67,21 +60,6 @@ export default function Pokemon({ number }) {
             <label>{capitalizeName(data.name)}</label>
           </Row>
           <PicSlideShow spritesDescUrlArray={spritesArray} />
-
-          {/* {Object.values(data.sprites).map((url, i) => (
-            <>
-              {url ? (
-                <>
-                  <PokePic picURL={url} />{" "}
-                  <label>{Object.keys(data.sprites)[i]}</label>
-                </>
-              ) : (
-                ""
-              )}
-            </> //display non null images
-          ))} */}
-
-          {/* <PokemonForms spritesUrlArray={data.sprites} /> */}
         </Container>
       </>
     );
@@ -92,11 +70,6 @@ export default function Pokemon({ number }) {
 function PicSlideShow({ spritesDescUrlArray }) {
   const [sprites, setSprites] = useState(spritesDescUrlArray);
   const [currentSpriteIndex, setCurrentSpriteIndex] = useState(0);
-  // useEffect(() => {
-  //   console.log(sprites);
-  //   console.log(currentSpriteIndex);
-  //   console.log(sprites.length);
-  // }, []);
   return (
     <>
       <Row className="justify-content-md-center">
@@ -143,20 +116,6 @@ function PicSlideShow({ spritesDescUrlArray }) {
     </>
   );
 }
-// export function PokemonForms(spritesUrlArray) {
-//   const [urls, setUrls] = useState([]);
-//   // useEffect(console.log(Object.values(spritesUrlArray)), []);
-//   useEffect(
-//     Object.values(spritesUrlArray).map((u) =>
-//       Object.values(u) === "null"
-//         ? console.log("I was null")
-//         : console.log(Object.values(u))
-//     ),
-//     [spritesUrlArray]
-//   );
-
-//   return <h1>Hello</h1>;
-// }
 
 function capitalizeName(name) {
   return name[0].toUpperCase() + name.slice(1);
