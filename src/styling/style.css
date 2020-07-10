@@ -101,7 +101,9 @@ Fairy Type:  D685AD */
 }
 .customBadge-electric {
   font-family: "Courier New", Courier, monospace;
-  color: #fff;
+  color: black;
+  /* font-size: 15px;
+  -webkit-text-stroke: 1px black; */
   background-color: #f7d02c;
 }
 .customBadge-grass {
