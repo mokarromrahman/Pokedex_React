@@ -13,7 +13,11 @@ import TestPokemon from "./Components/testPoke";
 // );
 ReactDOM.render(
   //<React.StrictMode>
-  <Pokemon number={"pikachu"} />,
+  <>
+    {/* <Pokemon name={"bulbasaur"} />
+    <Pokemon name={"pikachu"} />, */}
+    <App />
+  </>,
   //</React.StrictMode>,
   document.getElementById("root")
 );

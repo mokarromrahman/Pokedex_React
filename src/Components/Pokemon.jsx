@@ -24,12 +24,12 @@ import Steel from "../type_icons/steel.svg";
 import Water from "../type_icons/water.svg";
 
 //Component which will be used to render a single pokemon
-export default function Pokemon({ number }) {
+export default function Pokemon({ name }) {
   const [data, setData] = useState(null);
   const [types, setTypes] = useState([]);
   const [currentType, setCurrentType] = useState("");
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${number}`)
+    fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
       .then((res) => res.json())
       .then((r) => {
         //set the data
@@ -41,10 +41,10 @@ export default function Pokemon({ number }) {
         });
         setTypes(tempTypes);
         //set the current type to the first type
-        setCurrentType(tempTypes[1]);
+        setCurrentType(tempTypes[0]);
       })
       .catch(console.error);
-  }, [number]); //im not sure that the 2nd arguement is doing anything but it got rid of a warning
+  }, [name]); //im not sure that the 2nd arguement is doing anything but it got rid of a warning
 
   return data ? (
     //data was found for this pokemon
@@ -52,11 +52,11 @@ export default function Pokemon({ number }) {
       <Container
         //https://stackoverflow.com/questions/36209432/reactjs-add-dynamic-class-to-manual-class-names
         //this can be used to dynamically change the classes
-        className={`customBorder customBorder-` + currentType}
+        className={`pokemonContainer customBorder customBorder-` + currentType}
         style={{ width: "15em" }}
       >
         <Row className="justify-content-md-center">
-          <label>{capitalizeName(data.name)}</label>
+          <label>{data.id + ". " + capitalizeName(data.name)}</label>
         </Row>
         <PicSlideShow spritesDescUrlArray={getSpriteArray(data.sprites)} />
         <Row className="justify-content-md-center">
@@ -68,7 +68,7 @@ export default function Pokemon({ number }) {
     </>
   ) : (
     //there was no data returned for the pokemon
-    <div>{number} not found.</div>
+    <div>{name} not found.</div>
   );
 }
 
@@ -140,7 +140,7 @@ function PicSlideShow({ spritesDescUrlArray }) {
   return (
     <>
       <Row className="justify-content-md-center">
-        <Col>
+        <Col xs lg="2">
           <Button
             size="sm"
             onClick={() =>
@@ -153,13 +153,16 @@ function PicSlideShow({ spritesDescUrlArray }) {
           </Button>
         </Col>
 
-        <Image
-          src={sprites[currentSpriteIndex].url}
-          alt={sprites[currentSpriteIndex].description}
-          fluid
-          thumbnail
-        ></Image>
-        <Col>
+        <Col md="auto">
+          <Image
+            src={sprites[currentSpriteIndex].url}
+            alt={sprites[currentSpriteIndex].description}
+            fluid
+            thumbnail
+          ></Image>
+        </Col>
+
+        <Col xs lg="2">
           <Button
             size="sm"
             onClick={() =>
