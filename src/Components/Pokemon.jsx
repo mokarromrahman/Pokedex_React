@@ -46,6 +46,7 @@ export default function Pokemon({ name }) {
       .catch(console.error);
   }, [name]); //im not sure that the 2nd arguement is doing anything but it got rid of a warning
 
+  // useEffect
   return data ? (
     //data was found for this pokemon
     <>

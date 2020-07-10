@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Pokemon from "./Components/Pokemon.jsx";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { ArrowLeft, ArrowRight } from "react-bootstrap-icons";
+import Pagination from "./Components/Pagination.jsx";
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -33,26 +33,28 @@ function App() {
       .catch(console.error);
   });
 
+  function originalPage() {
+    setCurrentUrl(currentUrl);
+  }
+  function nextPage() {
+    setCurrentUrl(nextUrl);
+  }
+  function previousPage() {
+    setCurrentUrl(previousURL);
+  }
   return pokemonList ? (
-    <>
+    <Container fluid>
       <Row md={5}>
         {pokemonList.map((p) => (
           <Pokemon name={p} />
         ))}
       </Row>
-      {/* <Row>
-        <Col>
-          <Button onClick={setCurrentUrl(previousURL)}>
-            <ArrowLeft></ArrowLeft>
-          </Button>
-        </Col>
-        <Col>
-          <Button onClick={setCurrentUrl(nextUrl)}>
-            <ArrowRight></ArrowRight>
-          </Button>
-        </Col>
-      </Row> */}
-    </>
+      <Pagination
+        originalPage={originalPage}
+        nextPage={nextPage}
+        previousPage={previousPage}
+      />
+    </Container>
   ) : (
     <div>Nothing here</div>
   );
