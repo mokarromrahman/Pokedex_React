@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Pokemon from "./Components/Pokemon.jsx";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Pagination from "./Components/Pagination.jsx";
+import TestPokemon from "./Components/testPoke.jsx";
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -29,6 +30,7 @@ function App() {
           pokesFound.push(p.name);
         });
         setPokemonList(pokesFound);
+        setLoading(false);
       })
       .catch(console.error);
   });
@@ -42,11 +44,15 @@ function App() {
   function previousPage() {
     setCurrentUrl(previousURL);
   }
+
+  if (loading) {
+    return <Container fluid>Loading</Container>;
+  }
   return pokemonList ? (
     <Container fluid>
       <Row md={5}>
         {pokemonList.map((p) => (
-          <Pokemon name={p} />
+          <TestPokemon name={p} />
         ))}
       </Row>
       <Pagination
